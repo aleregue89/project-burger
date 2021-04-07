@@ -40,6 +40,7 @@ class BurgerBuilder extends Component {
         error: false
     }
 
+    // using component didmount in order to fetch data from the firebase
     componentDidMount () {
         axios.get('https://react-project-burger-7959c-default-rtdb.firebaseio.com/ingredients.json')
             .then(response => {
@@ -134,6 +135,7 @@ class BurgerBuilder extends Component {
         })
     }
 
+    // handler for send POST request to firebase
     purchaseContinueHandler = () => {
         // alert('You continue!')
         this.setState({loading: true})
@@ -211,4 +213,5 @@ class BurgerBuilder extends Component {
     }
 }
 
+// using withErrorHandler as hoc in order to wrap burgerbuilder and be able to use the interceptors from axios
 export default withErrorHandler(BurgerBuilder, axios)
